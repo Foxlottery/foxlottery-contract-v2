@@ -58,6 +58,19 @@
   },
   {
     "inputs": [],
+    "name": "lottery",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "nextRandomResult",
     "outputs": [
       {
@@ -72,19 +85,6 @@
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "pancakeSwapLottery",
     "outputs": [
       {
         "internalType": "address",
@@ -119,7 +119,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSwapLottery",
+        "name": "_lottery",
         "type": "address"
       }
     ],

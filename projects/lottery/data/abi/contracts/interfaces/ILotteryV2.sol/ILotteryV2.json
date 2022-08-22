@@ -98,7 +98,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_priceTicketInCake",
+        "name": "_priceTicketInErc20",
         "type": "uint256"
       },
       {

@@ -101,7 +101,7 @@
   },
   {
     "inputs": [],
-    "name": "owner",
+    "name": "lottery",
     "outputs": [
       {
         "internalType": "address",
@@ -114,7 +114,7 @@
   },
   {
     "inputs": [],
-    "name": "pancakeSwapLottery",
+    "name": "owner",
     "outputs": [
       {
         "internalType": "address",
@@ -193,7 +193,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSwapLottery",
+        "name": "_lottery",
         "type": "address"
       }
     ],

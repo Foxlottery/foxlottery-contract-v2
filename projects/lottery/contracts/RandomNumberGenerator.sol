@@ -6,12 +6,12 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@chainlink/contracts/src/v0.8/dev/VRFConsumerBase.sol";
 import "./interfaces/IRandomNumberGenerator.sol";
-import "./interfaces/IPancakeSwapLottery.sol";
+import "./interfaces/ILotteryV2.sol";
 
 contract RandomNumberGenerator is VRFConsumerBase, IRandomNumberGenerator, Ownable {
     using SafeERC20 for IERC20;
 
-    address public pancakeSwapLottery;
+    address public lottery;
     bytes32 public keyHash;
     bytes32 public latestRequestId;
     uint32 public randomResult;
@@ -32,10 +32,10 @@ contract RandomNumberGenerator is VRFConsumerBase, IRandomNumberGenerator, Ownab
 
     /**
      * @notice Request randomness from a user-provided seed
-     * @param _seed: seed provided by the PancakeSwap lottery
+     * @param _seed: seed provided by the lottery
      */
     function getRandomNumber(uint256 _seed) external override {
-        require(msg.sender == pancakeSwapLottery, "Only PancakeSwapLottery");
+        require(msg.sender == lottery, "Only lottery");
         require(keyHash != bytes32(0), "Must have valid key hash");
         require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK tokens");
 
@@ -59,11 +59,11 @@ contract RandomNumberGenerator is VRFConsumerBase, IRandomNumberGenerator, Ownab
     }
 
     /**
-     * @notice Set the address for the PancakeSwapLottery
-     * @param _pancakeSwapLottery: address of the PancakeSwap lottery
+     * @notice Set the address for the lottery
+     * @param _lottery: address of the lottery
      */
-    function setLotteryAddress(address _pancakeSwapLottery) external onlyOwner {
-        pancakeSwapLottery = _pancakeSwapLottery;
+    function setLotteryAddress(address _lottery) external onlyOwner {
+        lottery = _lottery;
     }
 
     /**
@@ -96,6 +96,6 @@ contract RandomNumberGenerator is VRFConsumerBase, IRandomNumberGenerator, Ownab
     function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
         require(latestRequestId == requestId, "Wrong requestId");
         randomResult = uint32(1000000 + (randomness % 1000000));
-        latestLotteryId = IPancakeSwapLottery(pancakeSwapLottery).viewCurrentLotteryId();
+        latestLotteryId = ILotteryV2(lottery).viewCurrentLotteryId();
     }
 }
