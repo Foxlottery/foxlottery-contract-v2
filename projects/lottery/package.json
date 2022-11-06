@@ -7,8 +7,9 @@
   "private": true,
   "scripts": {
     "compile": "npx hardhat compile",
-    "deploy:testnet": "npx hardhat run --network testnet scripts/deploy.ts",
-    "deploy:mainnet": "npx hardhat run --network mainnet scripts/deploy.ts",
+    "deploy:bscTestnet": "npx hardhat run --network bscTestnet scripts/deploy.ts",
+    "deploy:bscMainnet": "npx hardhat run --network bscMainnet scripts/deploy.ts",
+    "deploy:mumbai": "npx hardhat run --network mumbai scripts/deploy.ts",
     "test": "npx hardhat test",
     "test:coverage": "npx hardhat coverage",
     "test:size-contracts": "npx hardhat size-contracts"

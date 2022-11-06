@@ -7,7 +7,7 @@ const sleep = (waitTime: any) => new Promise((resolve) => setTimeout(resolve, wa
 const main = async (withVRFOnTestnet = true) => {
   const Lottery = await ethers.getContractFactory("LotteryV2");
 
-  if (currentNetwork == "testnet") {
+  if (currentNetwork == "bscTestnet" || currentNetwork == "mumbai") {
     let randomNumberGenerator;
 
     if (withVRFOnTestnet) {
@@ -50,7 +50,7 @@ const main = async (withVRFOnTestnet = true) => {
       config.TreasuryAddress[currentNetwork],
       config.InjectorAddress[currentNetwork]
     );
-  } else if (currentNetwork == "mainnet") {
+  } else if (currentNetwork == "bscMainnet") {
     const RandomNumberGenerator = await ethers.getContractFactory("RandomNumberGenerator");
     const randomNumberGenerator = await RandomNumberGenerator.deploy(
       config.VRFCoordinator[currentNetwork],

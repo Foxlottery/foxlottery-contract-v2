@@ -32,7 +32,7 @@ const bscMainnet: NetworkUserConfig = {
 };
 
 const mumbai: NetworkUserConfig = {
-  url: "https://rpc-mumbai.matic.today",
+  url: "https://polygon-mumbai.g.alchemy.com/v2/U72JPoKDH5RmMv9HdaMra3AL9a3vrZ0_",
   chainId: 80001,
   accounts: process.env.KEY_MAINNET !== undefined ? [process.env.KEY_MAINNET] : [],
 };
